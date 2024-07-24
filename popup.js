@@ -28,14 +28,34 @@ document.addEventListener('DOMContentLoaded', function() {
     storeCookieBtn.addEventListener('click', function() {
         const accountName = prompt("Enter account name:");
         if (accountName) {
-            chrome.storage.local.get('storedAccounts', function(data) {
-                const accounts = data.storedAccounts || [];
-                accounts.push({name: accountName}); // Simplified, add more details as needed
-                chrome.storage.local.set({'storedAccounts': accounts}, function() {
-                    console.log('Account added');
-                    displayAccounts(); // Refresh the accounts list
+            getSessionCookies(function(cookies) {
+                chrome.storage.local.get('storedAccounts', function(data) {
+                    const accounts = data.storedAccounts || [];
+                    accounts.push({name: accountName, cookies: cookies});
+                    chrome.storage.local.set({'storedAccounts': accounts}, function() {
+                        console.log('Account added with cookies');
+                        displayAccounts(); // Refresh the accounts list
+                        // Additional logging
+                        chrome.storage.local.get('storedAccounts', function(data) {
+                            console.log('Stored accounts:', data.storedAccounts);
+                        });
+                    });
                 });
             });
         }
     });
+
+    // Function to get cookies from the current tab
+    function getSessionCookies(callback) {
+        chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+            var currentTab = tabs[0];
+            if (!currentTab) {
+                console.error("No active tab identified.");
+                return;
+            }
+            chrome.cookies.getAll({ url: currentTab.url }, function(cookies) {
+                callback(cookies);
+            });
+        });
+    }
 });

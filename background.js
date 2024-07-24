@@ -16,18 +16,33 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                     });
                 });
 
-                // Retrieve and set new cookies from local storage
-                chrome.storage.local.get("storedCookies", (result) => {
-                    const storedCookies = result.storedCookies || [];
+                // Retrieve the account details
+                chrome.storage.local.get('storedAccounts', (result) => {
+                    const account = result.storedAccounts.find(acc => acc.name === request.accountDetails.name);
+                    if (!account || !account.cookies) {
+                        console.error("No cookies found for this account.");
+                        return;
+                    }
+
+                    const storedCookies = account.cookies;
                     storedCookies.forEach(storedCookie => {
                         // Ensure correct domain and URL format for setting cookies
-                        chrome.cookies.set({
+                        const cookieDetails = {
                             url: `https://chatgpt.com${storedCookie.path || '/'}`,
                             name: storedCookie.name,
                             value: storedCookie.value,
                             domain: storedCookie.domain,
-                        }, () => {
-                            console.log(`Set cookie: ${storedCookie.name}`);
+                            secure: true, // Ensure the cookie is set over HTTPS
+                            httpOnly: storedCookie.httpOnly || false, // Set HttpOnly attribute if present
+                            sameSite: storedCookie.sameSite || 'Lax' // Set SameSite attribute if present
+                        };
+
+                        chrome.cookies.set(cookieDetails, (cookie) => {
+                            if (chrome.runtime.lastError) {
+                                console.error(`Failed to set cookie: ${storedCookie.name}`, chrome.runtime.lastError);
+                            } else {
+                                console.log(`Set cookie: ${storedCookie.name}`);
+                            }
                         });
                     });
 
@@ -37,31 +52,4 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             });
         });
     }
-});
-
-// Function to get cookies from the current tab
-function getSessionCookies(callback) {
-    // Get the current tab
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        if (tabs.length === 0) {
-            console.error("No active tab identified.");
-            return;
-        }
-        var currentTab = tabs[0];
-        console.log(`Current tab identified for cookie retrieval: ${currentTab.id}`);
-
-        // Get all cookies for the current tab's domain
-        chrome.cookies.getAll({ url: currentTab.url }, (cookies) => {
-            // Filter or process cookies as needed, here we simply pass all cookies
-            callback(cookies);
-        });
-    });
-}
-
-// Example usage
-getSessionCookies((cookies) => {
-    // Store cookies locally
-    chrome.storage.local.set({ "storedCookies": cookies }, () => {
-        console.log("Cookies stored locally.");
-    });
 });
