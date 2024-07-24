@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Switcher</title>
+    <style>
+        :root {
+            --primary-color: #1d1d1d; /* Primary color for your UI */
+            --hover-color: #acacac; /* Darker shade for hover state */
+            --background-color: #2d2d2d; /* Background color for the body */
+            --button-color: #ff6347; /* Color for buttons */
+            --button-hover-color: #ff4500; /* Hover color for buttons */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            width: 400px;
+            background-color: var(--background-color);
+            color: #fff;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        button, ul {
+            display: block;
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: var(--button-hover-color);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            cursor: pointer;
+            padding: 10px;
+            background-color: var(--primary-color);
+            margin-bottom: 8px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        li:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>Switch Account</h1>
+    <button id="storeCookieBtn">Add Account</button>
+    <ul id="accounts-list"></ul> 
+    <script src="popup.js"></script>
+</body>
+</html>
