@@ -11,11 +11,12 @@ Welcome to GPT Account Switcher! This tool allows you to seamlessly switch betwe
 1. Download the extension file from [this link](https://github.com/SahiDemon/GPT-account-switcher/archive/refs/heads/main.zip).
 2. Save the downloaded zip to a desired location on your computer.
 3. Extract the zipfile
-4. Enable developer mode in your browser.
-5. Load the extension by following the browser-specific instructions for loading an unpacked extension.
+5. Enable developer mode in your [browser extentions](chrome://extensions/). 
+6. Load the extension by following the browser-specific instructions for loading an unpacked extension.
 
 ## Usage
 
 1. Launch the GPT Account Switcher extension.
-2. Select the desired account from the dropdown menu.
-3. Click on the "Switch Account" button to switch to the selected account.
+2. Frist add the aacounts
+3. Select the desired account from the dropdown menu.
+4. Click on the desired account to switch to the selected account.
