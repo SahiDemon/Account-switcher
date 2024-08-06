@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Account Switcher for ChatGPT",
+    "name": "Account Switcher",
     "version": "1.0",
-    "description": "Switch accounts on ChatGPT by SahiDemon.",
+    "description": "Switch Switcher by SahiDemon.",
     "permissions": [
         "tabs",
         "cookies",
@@ -16,7 +16,7 @@
         "default_popup": "popup.html"
     },
     "host_permissions": [
-        "https://chatgpt.com/*"
+        "*://*/*"
     ],
     "icons": {
         "16": "icons/16.png",
