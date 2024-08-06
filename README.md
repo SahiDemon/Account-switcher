@@ -20,3 +20,6 @@ Welcome to GPT Account Switcher! This tool allows you to seamlessly switch betwe
 2. Frist add the aacounts
 3. Select the desired account from the dropdown menu.
 4. Click on the desired account to switch to the selected account.
+
+
+Note = The files on the release page ( .crx file ) is currently not functional due to browser policies. Browsers do not activate extensions without uploading them to the Chrome Web Store. This is the only available workaround.
