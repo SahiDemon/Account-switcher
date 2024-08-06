@@ -2,78 +2,131 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Switcher</title>
     <style>
-        :root {
-            --primary-color: #1d1d1d; /* Primary color for your UI */
-            --hover-color: #acacac; /* Darker shade for hover state */
-            --background-color: #2d2d2d; /* Background color for the body */
-            --button-color: #2c2c2c; /* Color for buttons */
-            --button-hover-color: #b6b6b6; /* Hover color for buttons */
+         :root {
+            --primary-color: #1d1d1d;
+            --hover-color: #535353;
+            --background-color: #2d2d2d;
+            --button-color: #2c2c2c;
+            --button-hover-color: #4b4b4b;
+            --text-color: #fff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 20px;
             width: 400px;
             background-color: var(--background-color);
-            color: #fff;
+            color: var(--text-color);
+            margin: 0;
         }
-
         h1 {
-            color: #fff;
+            color: var(--text-color);
             font-size: 24px;
             margin-bottom: 20px;
+            text-align: center;
         }
-
         button, ul {
             display: block;
             margin: 20px 0;
+            width: 100%;
         }
-
         button {
             background-color: var(--button-color);
-            color: white;
+            color: var(--text-color);
             border: none;
-            padding: 10px 20px;
+            padding: 10px 15px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 14px;
-            transition: background-color 0.3s ease;
+            font-size: 16px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
         }
-
         button:hover {
             background-color: var(--button-hover-color);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
-
         ul {
             list-style-type: none;
             padding: 0;
         }
-
         li {
-            cursor: pointer;
+            background-color: var(--button-color);
             padding: 10px;
-            background-color: var(--primary-color);
-            margin-bottom: 8px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-bottom: 10px;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        li:hover {
+            background-color: var(--button-hover-color);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        .account-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px; 
+            margin-bottom: 5px; /* Reduce spacing between items */
+            border-bottom: 1px solid #5c5c5c;
+}
+        .account-name {
+            font-size: 15px;
+            padding-left: 15px;
+      
+        }
+        .rename-btn {
+            background-color: #424242;
+            width: 30px; /* Adjust the width as needed */
+            height: 30px; /* Adjust the height as needed */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        li:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        .rename-btn .icon {
+            margin: 0; /* Remove the default margin */
+        }
+
+        .rename-btn:hover {
+            background-color: #8b8b8b;
+        }
+        .delete-btn {
+            background-color: #68312d;
+            color: var(--text-color);
+            border: none;
+            padding-right: 20px;
+            padding: 5px 5px;
+            font-size: 12px;
+            max-width: 80px;
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .delete-btn:hover {
+            background-color: #d32f2f;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .icon {
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Switch Account</h1>
-    <button id="storeCookieBtn">Add Account</button>
+    <h1>Account Switcher</h1>
+    <h3><center>By SahiDemon</center></h3>
+    <button id="storeCookieBtn">
+        <span class="icon">➕</span> Add Account
+    </button>
     <ul id="accounts-list"></ul> 
     <script src="popup.js"></script>
 </body>
