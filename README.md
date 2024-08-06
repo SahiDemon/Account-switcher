@@ -1,6 +1,6 @@
 # GPT Account Switcher
 
-Welcome to GPT Account Switcher! This tool allows you to seamlessly switch between multiple GPT accounts with ease.
+This tool allows you to seamlessly switch between multiple GPT accounts with ease.
 
 ## Features
 
