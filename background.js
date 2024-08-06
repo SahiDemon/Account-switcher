@@ -6,12 +6,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 return;
             }
             let tab = tabs[0];
-            console.log(`Active tab identified: ${tab.id}`);
+            let url = new URL(tab.url);
+            let baseUrl = `${url.protocol}//${url.host}`;
 
             // Clear existing cookies for the site
-            chrome.cookies.getAll({ url: "https://chatgpt.com" }, (cookies) => {
+            chrome.cookies.getAll({ url: baseUrl }, (cookies) => {
                 cookies.forEach(cookie => {
-                    chrome.cookies.remove({ url: `https://chatgpt.com${cookie.path}`, name: cookie.name }, () => {
+                    chrome.cookies.remove({ url: `${baseUrl}${cookie.path}`, name: cookie.name }, () => {
                         console.log(`Removed cookie: ${cookie.name}`);
                     });
                 });
@@ -28,11 +29,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                     storedCookies.forEach(storedCookie => {
                         // Ensure correct domain and URL format for setting cookies
                         const cookieDetails = {
-                            url: `https://chatgpt.com${storedCookie.path || '/'}`,
+                            url: `${baseUrl}${storedCookie.path || '/'}`,
                             name: storedCookie.name,
                             value: storedCookie.value,
                             domain: storedCookie.domain,
-                            secure: true, // Ensure the cookie is set over HTTPS
+                            path: storedCookie.path || '/',
+                            secure: storedCookie.secure || true, // Ensure the cookie is set over HTTPS
                             httpOnly: storedCookie.httpOnly || false, // Set HttpOnly attribute if present
                             sameSite: storedCookie.sameSite || 'Lax' // Set SameSite attribute if present
                         };
