@@ -14,6 +14,8 @@ Welcome to GPT Account Switcher! This tool allows you to seamlessly switch betwe
 5. Enable developer mode in your [browser extentions](chrome://extensions/). 
 6. Load the extension by following the browser-specific instructions for loading an unpacked extension.
 
+#### Note = The files on the release page ( .crx file ) is currently not functional due to browser policies. Browsers do not activate extensions without uploading them to the Chrome Web Store. This is the only available workaround.
+
 ## Usage
 
 1. Launch the GPT Account Switcher extension.
@@ -22,4 +24,3 @@ Welcome to GPT Account Switcher! This tool allows you to seamlessly switch betwe
 4. Click on the desired account to switch to the selected account.
 
 
-Note = The files on the release page ( .crx file ) is currently not functional due to browser policies. Browsers do not activate extensions without uploading them to the Chrome Web Store. This is the only available workaround.
