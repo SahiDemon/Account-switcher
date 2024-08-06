@@ -8,10 +8,11 @@ Welcome to GPT Account Switcher! This tool allows you to seamlessly switch betwe
 
 ## Installation
 
-1. Download the extension file from [this link](https://github.com/SahiDemon/GPT-account-switcher/releases/latest).
-2. Save the downloaded file to a desired location on your computer.
-3. Enable developer mode in your browser.
-4. Load the extension by following the browser-specific instructions for loading an unpacked extension.
+1. Download the extension file from [this link](https://github.com/SahiDemon/GPT-account-switcher/archive/refs/heads/main.zip).
+2. Save the downloaded zip to a desired location on your computer.
+3. Extract the zipfile
+4. Enable developer mode in your browser.
+5. Load the extension by following the browser-specific instructions for loading an unpacked extension.
 
 ## Usage
 
