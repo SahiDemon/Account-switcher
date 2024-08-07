@@ -1,10 +1,10 @@
 #  Account Switcher
 
-This tool allows you to seamlessly switch between multiple GPT accounts with ease.
+This tool allows you to seamlessly switch between multiple accounts with ease.
 
 ## Features
 
-- Easy account switching: Switch between different GPT accounts without any hassle.
+- Easy account switching: Switch between different accounts without any hassle.
 
 ## Installation
 
@@ -17,6 +17,8 @@ This tool allows you to seamlessly switch between multiple GPT accounts with eas
 #### Note = The files on the release page ( .crx file ) is currently not functional due to browser policies. Browsers do not activate extensions without uploading them to the Chrome Web Store. This is the only available workaround.
 
 ## Usage
+
+#### Note = Clean the site data or log out from existing accounts. Then, add the accounts to the sites after the extension is installed. Finally, add the account to the extension.
 
 1. Launch the Account Switcher extension.
 2. Frist add the aacounts
